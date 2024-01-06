@@ -6,6 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <script src="https://cdn.tailwindcss.com"></script>
+
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
@@ -14,7 +15,11 @@
 
   <body>
     <%= render 'shared/main_navbar' %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
       <%= yield %>
     <%= render 'shared/footer' %>
   </body>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+
 </html>
