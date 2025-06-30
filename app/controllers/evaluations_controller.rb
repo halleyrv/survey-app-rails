@@ -3,7 +3,7 @@ class EvaluationsController < ApplicationController
 
   # GET /evaluations or /evaluations.json
   def index
-    @evaluations = Section.all
+    @evaluations = Section.all.where(section_type: 1)
   end
 
   # GET /evaluations/1 or /evaluations/1.json
@@ -29,7 +29,7 @@ class EvaluationsController < ApplicationController
         format.turbo_stream { 
           render turbo_stream: turbo_stream.replace('evaluations_all', 
                                                      partial: 'evaluations/evaluations',
-                                                    locals: {evaluations: Section.all}) }
+                                                    locals: {evaluations: Section.all.where(section_type: 1)}) }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -40,11 +40,8 @@ class EvaluationsController < ApplicationController
   def update
     respond_to do |format|
       if @evaluation.update(evaluation_params)
-        puts "HOLAA"
-        puts "Redireccionando a: #{evaluation_url(@evaluation)}"
         format.turbo_stream { render turbo_stream: turbo_stream.replace("section_#{@evaluation.id}",
                                                   partial: 'evaluations/evaluation',
-                                                  notice: "Evaluation was successfully updated",
                                                   locals: { evaluation: @evaluation }) }
       else
         format.html { render :edit, status: :unprocessable_entity }

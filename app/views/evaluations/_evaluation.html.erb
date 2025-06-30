@@ -6,7 +6,7 @@
     <p>
       Name:
       <strong class="font-semibold">
-        <%= evaluation.name %> HEY
+        <%= evaluation.name %> 
       </strong>
     </p>
 
@@ -23,10 +23,10 @@
       <%= evaluation.user_id %>
       </strong>
     </p>
-    <div>
+    <div class="flex justify-end">
       <%= button_to evaluation_path(evaluation), method: :get do %>
         <div class="rounded-lg bg-evaluationStrong px-5 py-2 text-white text-sm font-semibold">
-          Show evaluation
+          See more
         </div>
       <% end %>  
     </div>
