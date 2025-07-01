@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :sections do
+    post 'question/create', to: 'questions#create', as: :create_question
+    patch 'question/update', to: 'questions#update', as: :update_question
+    delete 'question/destroy', to: 'questions#destroy', as: :destroy_question
+  end
   resources :chapters
   resources :evaluations
   devise_for :users

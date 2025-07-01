@@ -8,6 +8,7 @@ class EvaluationsController < ApplicationController
 
   # GET /evaluations/1 or /evaluations/1.json
   def show
+    @question = Question.new
   end
 
   # GET /evaluations/new
