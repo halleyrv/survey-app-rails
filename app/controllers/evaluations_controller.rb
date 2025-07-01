@@ -3,7 +3,7 @@ class EvaluationsController < ApplicationController
 
   # GET /evaluations or /evaluations.json
   def index
-    @evaluations = Section.all.where(section_type: 1)
+    @evaluations = Section.grab_all_evaluations
   end
 
   # GET /evaluations/1 or /evaluations/1.json
@@ -29,7 +29,7 @@ class EvaluationsController < ApplicationController
         format.turbo_stream { 
           render turbo_stream: turbo_stream.replace('evaluations_all', 
                                                      partial: 'evaluations/evaluations',
-                                                    locals: {evaluations: Section.all.where(section_type: 1)}) }
+                                                    locals: {evaluations: Section.grab_all_evaluations}) }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
