@@ -1,5 +1,6 @@
 class Section < ApplicationRecord
   belongs_to :user
+  has_many :questions, dependent: :destroy
   enum section_type: [:default, :evaluation, :chapter]
 
   scope :grab_all_evaluations, -> { where(section_type: 1) }
